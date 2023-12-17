@@ -27,6 +27,22 @@
         <div class="card-footer">
           <button id="generate" class="btn">Generate Password</button>
         </div>
+        <section id="overlay">
+          <menu id="menu">
+            <label for="length">Length of Password:</label>
+            <input type="number" id="length" name="length" min="8" max="128">
+            <br>
+            <label for="type">Type of Password:</label>
+            <select id="type">
+              <option value="lowercaseLetters">Lowercase Letters</option>
+              <option value="letters">Lowercase and Uppercase Letters</option>
+              <option value="lettersNumbers">Lowercase and Uppercase Letters with Numbers</option>
+              <option value="lettersNumbersSymbols">Lowercase and Uppercase Letters with Numnbers and Symbols</option>
+            </select>
+            <br>
+            <button id="menu-close">Create!</button>
+          </menu>
+        </section>
       </div>
     </div>
     <script src="./Assests/script.js"></script>
