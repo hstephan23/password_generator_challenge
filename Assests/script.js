@@ -1,4 +1,6 @@
 // Assignment code here
+var passwordLength = 0;
+var selectedOption = "";
 lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
 letters = ["a", "A", "b", "B", "c", "C", "d", "D", "e", "E", "f", "F", "g", "G", "h", "H", "i",
@@ -20,36 +22,46 @@ function pushMenu() {
 
 function menuDisappear() {
   document.getElementById("overlay").style.display = "none";
+  selectedOption = document.getElementById("type").value;
+  console.log(selectedOption);
+  passwordLength = document.getElementById("length").value;
+  console.log(passwordLength);
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+  passwordText.value = password;
 }
 function generatePassword() {
   var createPassword = "";
-  var passwordLength = 0;
-  selectedOption = "";
-  if (selectedOption === "lowercaseLetters") {
+  console.log(selectedOption);
+  console.log(passwordLength);
+  if (selectedOption === "lowercaseLetters" && 128 >= passwordLength && passwordLength>= 8) {
     for (let i = 0; i < passwordLength; i++) {
-      console.log(createPassword += lowercase[(Math.floor(Math.random() * lowercase.length))]);
+      createPassword += lowercase[(Math.floor(Math.random() * lowercase.length))];
     }
   }
-  else if (selectedOption === "Letters") {
+  else if (selectedOption === "letters" && 128 >= passwordLength && passwordLength >= 8) {
     for (let i = 0; i < passwordLength; i++) {
-      console.log(createPassword += letters[(Math.floor(Math.random() * letters.length))]);
+      createPassword += letters[(Math.floor(Math.random() * letters.length))];
     }
   }
-  else if (selectedOption === "Uppercase and Lowercase Letters With Numbers") {
+  else if (selectedOption === "lettersNumbers" && 128 >= passwordLength && passwordLength >= 8) {
     for (let i = 0; i < passwordLength; i++) {
-      console.log(createPassword += lettersNumbers[(Math.floor(Math.random() * lettersNumbers.length))]);
+      createPassword += lettersNumbers[(Math.floor(Math.random() * lettersNumbers.length))];
     }
   }
-  else if (selectedOption === "Uppercase and Lowercase Letters with Numbers and Symbols") {
+  else if (selectedOption === "lettersNumbersSymbols" && 128 >= passwordLength && passwordLength >= 8) {
     for (let i = 0; i < passwordLength; i++) {
-      console.log(createPassword += lettersNumbersSymbols[(Math.floor(Math.random() * lettersNumbersSymbols.length))]);
+      createPassword += lettersNumbersSymbols[(Math.floor(Math.random() * lettersNumbersSymbols.length))];
     }
   }
-  else if (passwordLength < 8){
-    return "Password Not Created, Length Not Selected"
+  else if (passwordLength > 128) {
+    return "Password Length Too Long!"
+  }
+  else if (passwordLength < 8) {
+    return "Password Length Too Short!"
   }
   else {
-    return "Password Not Created, Type Not specified"
+    return "You Didn't Select a Type!"
   }
   return createPassword
 }
@@ -61,11 +73,6 @@ var passwordCreation = document.getElementById("menu-close");
 // Write password to the #password input
 function writePassword() {
   pushMenu()
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
 }
 
 // Add event listener to generate button
