@@ -16,20 +16,6 @@ lettersNumbersSymbols = ["a", "A", "b", "B", "c", "C", "d", "D", "e", "E", "f", 
 "t", "T", "u", "U", "v", "V", "w", "W", "x", "X", "y", "Y", "z", "Z", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 
 "!", "@", "#", "$", "%", "&", "*"];
 
-function pushMenu() {
-  document.getElementById("overlay").style.display = "flex";
-}
-
-function menuDisappear() {
-  document.getElementById("overlay").style.display = "none";
-  selectedOption = document.getElementById("type").value;
-  console.log(selectedOption);
-  passwordLength = document.getElementById("length").value;
-  console.log(passwordLength);
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-  passwordText.value = password;
-}
 function generatePassword() {
   var createPassword = "";
   console.log(selectedOption);
@@ -71,10 +57,21 @@ var generateBtn = document.querySelector("#generate");
 var passwordCreation = document.getElementById("menu-close");
 
 // Write password to the #password input
-function writePassword() {
-  pushMenu()
+function pushMenu() {
+  document.getElementById("overlay").style.display = "flex";
+}
+
+function passwordAppear() {
+  document.getElementById("overlay").style.display = "none";
+  selectedOption = document.getElementById("type").value;
+  console.log(selectedOption);
+  passwordLength = document.getElementById("length").value;
+  console.log(passwordLength);
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+  passwordText.value = password;
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-passwordCreation.addEventListener("click", menuDisappear);
+generateBtn.addEventListener("click", pushMenu);
+passwordCreation.addEventListener("click", passwordAppear);
