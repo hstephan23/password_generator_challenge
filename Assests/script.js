@@ -1,6 +1,6 @@
 // Assignment code here
-var passwordLength = 0;
-var selectedOption = "";
+let passwordLength = 0;
+let selectedOption = "";
 lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
 letters = ["a", "A", "b", "B", "c", "C", "d", "D", "e", "E", "f", "F", "g", "G", "h", "H", "i",
@@ -17,7 +17,7 @@ lettersNumbersSymbols = ["a", "A", "b", "B", "c", "C", "d", "D", "e", "E", "f", 
 "!", "@", "#", "$", "%", "&", "*"];
 
 function generatePassword() {
-  var createPassword = "";
+  let createPassword = "";
   console.log(selectedOption);
   console.log(passwordLength);
   if (selectedOption === "lowercaseLetters" && 128 >= passwordLength && passwordLength>= 8) {
